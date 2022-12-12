@@ -46,7 +46,8 @@
         </nav>
         <img class="trapesium" ; src="../../img/1.jpg" alt="">
         <div class="p my-5">
-            <h1>Do You Want To Know <br> Movie</h1>
+         
+            <h1> <span style="color:#ff9900";> Do </span> <span style="color:#F2D11F">You</span> <span style="color:#ff9900">Want</span> <span style="color:#F2D11F">To</span> <span style="color:#ff9900">Know</span><br> <span style="color:#F2D11F">Movie</h1></span>
             <br>
             <h4>Pusing cari website yang memberikan informasi <br>
                 menarik tentang movie yang paling lengkap?<br>
