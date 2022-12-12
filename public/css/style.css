@@ -1,0 +1,52 @@
+.trapesium {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: -1;
+    height: 100%;
+    clip-path: polygon(40% 0%, 100% 0, 100% 100%, 20% 100%);
+}
+
+ul.navbar-nav {
+    font-size: 24px;
+    font-weight: 400;
+    text-shadow: 0px 1px 2px #000000;
+}
+
+.nav-item .nav-link {
+    color: #ff9900;
+}
+
+.nav-item2 .nav-link {
+    color: #f2d11f;
+}
+
+.btn {
+    background: rgb(242, 209, 31);
+    background: linear-gradient(
+        90deg,
+        rgba(242, 209, 31, 1) 0%,
+        rgba(255, 153, 0, 1) 100%
+    );
+    box-shadow: 0.1px 2px 5px#656565;
+}
+
+.p h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.p h4 {
+    font-size: 20px;
+    font-weight: 400;
+}
+.p h5 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.spnB {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
