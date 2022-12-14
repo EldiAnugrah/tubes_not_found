@@ -25,16 +25,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item mx-5">
-                            <a class="nav-link" aria-current="page" href="#">About</a>
+                            <a class="nav-link" aria-current="page" href="/about">About</a>
                         </li>
                         <li class="nav-item mx-5">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item2 mx-5">
-                            <a class="nav-link" aria-current="page" href="#">Category</a>
+                            <a class="nav-link" aria-current="page" href="/categories">Category</a>
                         </li>
                         <li class="nav-item2 mx-5">
-                            <a class="nav-link" aria-current="page" href="#">Login/Register</a>
+                            <a class="nav-link" aria-current="page" href="/login">Login/Register</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
