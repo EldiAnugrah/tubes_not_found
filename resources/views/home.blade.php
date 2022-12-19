@@ -118,12 +118,12 @@
             <div class="position-sticky pt-3 sidebar-sticky">
                 <ul class="nav flex-column nav-icons" >
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link active" aria-current="page" href="/about">
                             <span data-feather="home" class="align-text-bottom"><i class="bi bi-camera-reels-fill"></i></span>About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/">
                           <span data-feather="home" class="align-text-bottom"><i class="bi bi-house-door-fill"></i></span>Home
                         </a>
                     </li>

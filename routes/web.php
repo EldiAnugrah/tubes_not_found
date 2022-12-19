@@ -21,6 +21,7 @@ Route::get('/about', function () {
     ]);
 });
 
+// penghubung ke home
 Route::get('/', function () {
     return view('home',[
         "title" => "Home",
@@ -28,9 +29,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/category', function () {
-    return view('category',[
-        "title" => "Category",
-        "active" => 'category'
+// penghubung ke kategori
+Route::get('/categories',function (){
+    return view('categories',[
+        "title" => 'Categories',
+        'active' => 'categories'
+
     ]);
 });
