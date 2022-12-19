@@ -34,5 +34,6 @@ Route::get('/categories',function (){
     return view('categories',[
         "title" => 'Categories',
         'active' => 'categories'
+
     ]);
 });
