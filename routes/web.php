@@ -20,3 +20,10 @@ Route::get('/about', function () {
         "active" => 'about'
     ]);
 });
+
+Route::get('/', function () {
+    return view('home',[
+        "title" => "Home",
+        "active" => 'home'
+    ]);
+});
