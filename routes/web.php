@@ -27,3 +27,10 @@ Route::get('/', function () {
         "active" => 'home'
     ]);
 });
+
+Route::get('/category', function () {
+    return view('category',[
+        "title" => "Category",
+        "active" => 'category'
+    ]);
+});
