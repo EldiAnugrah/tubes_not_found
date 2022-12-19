@@ -50,3 +50,8 @@ ul.navbar-nav {
     font-weight: bold;
     color: white;
 }
+@media screen and (max-width: 1050px){
+	.trapesium{
+		display: none;
+	}
+}
