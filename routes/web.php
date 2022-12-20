@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('about');
 });
 
-Route::get('/post', function () {
-    return view('post');
+Route::get('/login', function () {
+    return view('login');
 });
