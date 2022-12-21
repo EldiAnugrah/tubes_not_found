@@ -33,14 +33,28 @@
                         <li class="nav-item2 mx-5">
                             <a class="nav-link" aria-current="page" href="/category">Category</a>
                         </li>
-                        <li class="nav-item2 mx-5">
-                            <a class="nav-link" aria-current="page" href="/login">Login/Register</a>
-                        </li>
+
+                        @if (Route::has('login'))
+                            @auth
+                                <li class="nav-item2 mx-5">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="nav-item2 mx-5">
+                                    <p class="nav-item2 mx-5"><span style="color: #ff9900">Halo Sir Mamang</span></p>
+                                </li>
+                            @else
+                                <li class="nav-item2 mx-5">
+                                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">Log in</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item2 mx-5">
+                                        <a class="nav-link" aria-current="page" href="{{ route('register') }}">Register</a>
+                                    </li>
+                                @endif
+                            @endauth
+                        @endif
+
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search Movie" aria-label="Search">
-                        <button type="button" class="btn btn-warning rounded-pill">Warning</button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -59,9 +73,20 @@
                 tentang <br> movie terbaru maupun lawas</h5>
         </div>
 
-        <button type="button" class="btn btn-warning rounded-pill btn-lg" style="width: 250px"><span
-                class="spnB">Read
-                More</span></button>
+
+        @if (Route::has('login'))
+            @auth
+                <button type="button" class="btn btn-warning rounded-pill btn-lg" style="width: 250px"><span
+                        class="spnB"><a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">Hapy
+                            Reading</a>
+                    </span></button>
+            @else
+                <button type="button" class="btn btn-warning rounded-pill btn-lg" style="width: 250px"><span
+                        class="spnB"><a class="nav-link" aria-current="page" href="{{ route('login') }}">Read More</a>
+                    </span></button>
+            @endauth
+        @endif
+
     </div>
 
 
