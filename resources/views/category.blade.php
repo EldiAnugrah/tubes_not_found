@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Category</title>
     <script src="https://unpkg.com/feather-icons"></script>
     {{-- bootstrap icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -64,6 +64,14 @@
       color: #ff9900;
     }
 
+    .btn-category .card {
+        background: linear-gradient(#ff9900, #f2d11f );
+        color: white;
+        margin: 20px;
+        border-radius: 25px;
+        text-align: center;
+    }
+
     </style>
   </head>
 <body>
@@ -78,7 +86,7 @@
                 </svg>
 
 {{--  logo--}}
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"><img class='img-fluid' src="img/LogoNotFound. " alt=""> </a>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"><img class='img-fluid' src="img/LogoNotFound.png " alt=""> </a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -118,12 +126,12 @@
             <div class="position-sticky pt-3 sidebar-sticky">
                 <ul class="nav flex-column nav-icons" >
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/about">
+                        <a class="nav-link active" aria-current="page" href="#">
                             <span data-feather="home" class="align-text-bottom"><i class="bi bi-camera-reels-fill"></i></span>About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">
+                        <a class="nav-link" href="#">
                           <span data-feather="home" class="align-text-bottom"><i class="bi bi-house-door-fill"></i></span>Home
                         </a>
                     </li>
@@ -142,71 +150,138 @@
         </nav>
     </div>
 
-    <div class="col-lg-8 justify">
-        <div class="row mb-4">
-            <div class="col-md">
+
+    <div class="col-8 justify-center btn-category">
+        <div class="row">
+            <div class="col-4">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Barat</h5>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md">
+            <div class="col-4">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Indonesia</h5>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md">
+            <div class="col-4">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Jepang</h5>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mb-4">
-            <div class="col-md">
+        <div class="row">
+            <div class="col-4">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Korea</h5>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md">
+            <div class="col-4">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Arab</h5>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md">
+            <div class="col-4">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Action</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Fiksi</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Romance</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Horror</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Misteri</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Fantasi</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dokumenter</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sejarah</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Musical</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Science</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Thriller</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">18+</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Anime</h5>
                     </div>
                 </div>
             </div>
