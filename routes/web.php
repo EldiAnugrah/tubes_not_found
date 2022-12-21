@@ -21,12 +21,17 @@ Route::get('/about', function () {
     ]);
 });
 
+
+Route::get('/login', function () {
+    return view('login');
+});
 // penghubung ke home
 Route::get('/', function () {
     return view('home',[
         "title" => "Home",
         "active" => 'home'
     ]);
+
 });
 
 // penghubung ke kategori
