@@ -14,9 +14,9 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-sm ">
-            <a class="navbar-brand" href=""><img src="../../img/LogoNotFound.png" alt=""
-                    style="width: 180px;"></a>
             <div class="container-fluid">
+                <a class="navbar-brand" href=""><img src="../../img/LogoNotFound.png" alt=""
+                        style="width: 180px;"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -25,10 +25,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item mx-5">
-                            <a class="nav-link" aria-current="page" href="/about">About</a>
+                            <a class="nav-link" aria-current="page" href="/">About</a>
                         </li>
                         <li class="nav-item mx-5">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/home">Home</a>
                         </li>
                         <li class="nav-item2 mx-5">
                             <a class="nav-link" aria-current="page" href="/category">Category</a>
@@ -46,8 +46,10 @@
         </nav>
         <img class="trapesium" ; src="../../img/1.jpg" alt="">
         <div class="p my-5">
-         
-            <h1> <span style="color:#ff9900";> Do </span> <span style="color:#F2D11F">You</span> <span style="color:#ff9900">Want</span> <span style="color:#F2D11F">To</span> <span style="color:#ff9900">Know</span><br> <span style="color:#F2D11F">Movie</h1></span>
+
+            <h1> <span style="color:#ff9900";> Do </span> <span style="color:#F2D11F">You</span> <span
+                    style="color:#ff9900">Want</span> <span style="color:#F2D11F">To</span> <span
+                    style="color:#ff9900">Know</span><br> <span style="color:#F2D11F">Movie</h1></span>
             <br>
             <h4>Pusing cari website yang memberikan informasi <br>
                 menarik tentang movie yang paling lengkap?<br>
