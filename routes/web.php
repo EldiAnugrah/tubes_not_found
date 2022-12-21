@@ -35,10 +35,10 @@ Route::get('/', function () {
 });
 
 // penghubung ke kategori
-Route::get('/categories',function (){
-    return view('categories',[
-        "title" => 'Categories',
-        'active' => 'categories'
+Route::get('/category',function (){
+    return view('category',[
+        "title" => 'Category',
+        'active' => 'category'
 
     ]);
 });

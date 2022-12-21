@@ -31,7 +31,7 @@
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item2 mx-5">
-                            <a class="nav-link" aria-current="page" href="/categories">Category</a>
+                            <a class="nav-link" aria-current="page" href="/category">Category</a>
                         </li>
                         <li class="nav-item2 mx-5">
                             <a class="nav-link" aria-current="page" href="/login">Login/Register</a>

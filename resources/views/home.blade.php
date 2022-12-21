@@ -128,7 +128,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/category">
                             <span data-feather="shopping-cart" class="align-text-bottom"><i class="bi bi-grid"></i></span>Category
                         </a>
                     </li>
