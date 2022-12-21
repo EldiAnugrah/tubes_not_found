@@ -40,7 +40,7 @@
                                     <a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
                                 </li>
                                 <li class="nav-item2 mx-5">
-                                    <p class="nav-item2 mx-5"><span style="color: #ff9900">Halo Sir Mamang</span></p>
+                                    <p class="nav-item2 mx-5"><span style="color: #ff9900">Welcome back, {{ auth()->user()->name }} </span></p>
                                 </li>
                             @else
                                 <li class="nav-item2 mx-5">
