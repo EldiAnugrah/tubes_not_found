@@ -34,3 +34,10 @@ Route::get('/category', function () {
         "active" => 'category'
     ]);
 });
+
+Route::get('/subscribe', function () {
+    return view('subscribe',[
+        "title" => "Subscribe",
+        "active" => 'subscribe'
+    ]);
+});
