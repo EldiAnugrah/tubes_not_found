@@ -39,9 +39,8 @@ Route::get('/category', function () {
     return view('category', [
         "title" => 'Category',
         'active' => 'category'
-
     ]);
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,0 +1,62 @@
+.nav-icons .nav-item .nav-link span {
+    margin-right: 20px;
+    font-size: 1.3rem;
+    color: #f2d11f;
+
+}
+
+.nav-icons .nav-item .nav-link:hover {
+    color: #ff9900;
+
+}
+
+.nav-icons .nav-item .nav-link {
+    font-size: 1.3rem;
+    color: #f2d11f;
+}
+
+.nav-icons .nav-item:hover {
+    background-color: rgb(246, 220, 201);
+    border-radius: 10px;
+}
+
+.nav-icons .nav-item .nav-link:hover span {
+    color: #ff9900;
+
+}
+
+.navlist {
+    color: #ff9900;
+    font-weight: bold;
+}
+
+.navsearch {
+    width: 900px;
+    color: #ff9900;
+
+
+}
+
+.navsearch input {
+    width: 400px;
+
+}
+
+.navsearch button {
+    background-color: #ff9900;
+    width: 50px;
+    color: white;
+}
+
+.nav-item,
+.nav-link {
+    color: #ff9900;
+}
+
+.btn-category .card {
+    background: linear-gradient(#ff9900, #f2d11f);
+    color: white;
+    margin: 20px;
+    border-radius: 25px;
+    text-align: center;
+}
