@@ -24,9 +24,9 @@
             <form class="d-flex ms-auto navsearch" role="search">
                 <div class="input-group">
                     <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" placeholder="Cari Berita Film" />
+                        <input type="search" id="search-input" class="form-control" placeholder="Cari Berita Film" />
                     </div>
-                    <button type="button" class="btn">
+                    <button type="button" class="btn" id="search-button">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
