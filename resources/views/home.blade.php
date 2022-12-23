@@ -3,7 +3,7 @@
 @section('content')
 
         <div class="col-lg-8 justify">
-            <div class="row mb-4">
+            <div class="row mb-4" id="movie-list">
                 @foreach($posts as $post)
                 <div class="col-md-4 mb-3">
                     <div class="card">
