@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +28,7 @@ Route::get('/login', function () {
 });
 
 // penghubung ke home
-Route::get('/home', function () {
-    return view('home', [
-        "title" => "Home",
-        "active" => 'home'
-    ]);
-});
+Route::get('/home', [PostController::class, 'index']);
 
 // penghubung ke kategori
 Route::get('/category', function () {

@@ -15,7 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('home', [
+            "title" => "Home",
+            "active" => 'home',
+            "posts" => Post::latest()->paginate(9)->withQueryString()
+        ]);
     }
 
     /**
