@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,8 @@ Route::get('/home', [PostController::class, 'index']);
 Route::get('/category', function () {
     return view('category', [
         "title" => 'Category',
-        'active' => 'category'
+        'active' => 'category',
+        'categories' => Category::all()
     ]);
 })->middleware('auth');
 
@@ -49,3 +52,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+// kodingan kelola post
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
