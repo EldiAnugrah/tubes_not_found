@@ -1,6 +1,6 @@
-Project Manager : Eldi Anugrah Pratama
+Project Manager : Eldi Anugrah Pratama <br>
 Front End       : Devi Indriawati
-                  Azikra Salma
+                  Azikra Salma <br>
 Back End        : Hafadz Amirullah
 
 
