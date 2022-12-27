@@ -24,13 +24,16 @@ Route::get('/', function () {
     ]);
 });
 
-//penghubung home
+//penghubung Login
 Route::get('/login', function () {
     return view('login');
 });
 
 // penghubung ke home
 Route::get('/home', [PostController::class, 'index']);
+
+// single post
+Route::get('home/{post:slug}', [PostController::class, 'show']);
 
 // penghubung ke kategori
 Route::get('/category', function () {
