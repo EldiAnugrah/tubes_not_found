@@ -28,8 +28,6 @@ class PostController extends Controller
             return [$genre['id']=> $genre['name']];
         });
 
-        dump($popularMovies);
-
         // pagination film api
         $popularMovies = $this->paginate($popularMovies, 6);
         $popularMovies->path('');
