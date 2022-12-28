@@ -28,6 +28,9 @@
                             <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item mx-5">
+                            <a class="nav-link" aria-current="page" href="/about">AboutUs</a>
+                        </li>
+                        <li class="nav-item mx-5">
                             <a class="nav-link" href="/posts">Posts</a>
                         </li>
                         <li class="nav-item2 mx-5">
@@ -36,13 +39,28 @@
 
                         @if (Route::has('login'))
                             @auth
+                                <div class="nav-item2 dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Welcome Back, <strong>{{ auth()->user()->name }}</strong>
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <a class="nav-link" href="route('logout')"
+                                                    onclick="event.preventDefault();
+                                                  this.closest('form').submit();">
+                                                    Logout</a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @else
                                 <li class="nav-item2 mx-5">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="nav-item2 mx-5">
-                                @else
-                                <li class="nav-item2 mx-5">
-                                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">Log in</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">Login</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <li class="nav-item2 mx-5">
@@ -51,7 +69,6 @@
                                 @endif
                             @endauth
                         @endif
-
                     </ul>
                 </div>
             </div>

@@ -22,10 +22,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ $active === 'history' ? 'active' : '' }}" href="#">
-                            <span data-feather="users" class="align-text-bottom"><i
-                                    class="bi bi-clock-history"></i></span>History
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="nav-link" href="route('logout')"
+                                onclick="event.preventDefault();
+                              this.closest('form').submit();">
+                                <i class="bi bi-box-arrow-right"></i>Logout </a>
+                        </form>
                     </li>
                 </ul>
             </div>
