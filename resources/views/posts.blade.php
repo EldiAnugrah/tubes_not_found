@@ -9,16 +9,25 @@
             @foreach ($posts as $post)
                 <div class="col-md-4 mb-3">
                     <div class="card">
-                        <div class="position-absolute px-3 py-2" style="background-color: rgba(0,0,0,0.7)"><a
-                                href="/posts?category={{ $post->category->slug }}"
-                                class=" text-white text-decoration-none">{{ $post->category->name }}</a></div>
+                        <div class="position-absolute px-3 py-2" style="background-color: rgba(0,0,0,0.7)">
+                            <a href="/posts?category={{ $post->category->slug }}" class=" text-white text-decoration-none">
+                                {{ $post->category->name }}
+                            </a>
+                            </div>    
+                    <!-- pengkondisian gambar default -->
+                        @if($post->image)
+                        <div style="max-height:400px; overflow:hidden;" >
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="card-img-top">
+                        </div>
+                        @else
                         <!-- tampil category database  -->
                         <img src="https://source.unsplash.com/400x400?{{ $post->category->name }}" class="card-img-top"
                             alt="{{ $posts[0]->category->name }}">
+                        @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }} </h5>
                             <p class="card-text fs-6">{{ $post->excerpt }}</p>
-                            <a href="/posts/{{ $post->title }}" class="btn btn-primary">Go somewhere</a>
+                            <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
