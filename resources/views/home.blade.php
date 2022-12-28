@@ -1,66 +1,110 @@
-@extends('layouts.main')
+<!doctype html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Slebew</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../img/LogoNotFound.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
 
-        <div class="col-lg-8 justify">
-            <div class="row mb-4" id="review">
-                <h3 class="text-center mb-4">
-                    Berita Film
-                </h3>
-                @foreach($posts as $post)
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                    <div class="position-absolute px-3 py-2" style="background-color: rgba(0,0,0,0.7)"><a href="/posts?category={{ $post->category->slug }}" class=" text-white text-decoration-none">{{ $post->category->name }}</a></div> <!-- tampil category database  -->
-                        <img src="https://source.unsplash.com/400x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $post->title }} </h5>
-                            <p class="card-text fs-6">{{ $post->excerpt }}</p>
-                            <a href="/home/{{ $post->title }}" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href=""><img src="../../img/LogoNotFound.png" alt=""
+                        style="width: 180px;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="/posts">Posts</a>
+                        </li>
+                        <li class="nav-item2 mx-5">
+                            <a class="nav-link" aria-current="page" href="/category">Category</a>
+                        </li>
+
+                        @if (Route::has('login'))
+                            @auth
+                                <li class="nav-item2 mx-5">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="nav-item2 mx-5">
+                                @else
+                                <li class="nav-item2 mx-5">
+                                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">Log in</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item2 mx-5">
+                                        <a class="nav-link" aria-current="page" href="{{ route('register') }}">Register</a>
+                                    </li>
+                                @endif
+                            @endauth
+                        @endif
+
+                    </ul>
                 </div>
-                @endforeach
-                
             </div>
+        </nav>
+        <img class="trapesium" ; src="../../img/1.jpg" alt="">
+        <div class="p my-5">
 
-            <!-- pagination post -->
-            <div class="row d-flex justify-content-end">
-                {{ $posts->links() }}
-            </div>
+            <h1> <span style="color:#ff9900";> Do </span> <span style="color:#F2D11F">You</span> <span
+                    style="color:#ff9900">Want</span> <span style="color:#F2D11F">To</span> <span
+                    style="color:#ff9900">Know</span><br> <span style="color:#F2D11F">Movie</h1></span>
+            <br>
+            @if (Route::has('login'))
+                @auth
+                    <h2><span style="color: #F2D11F">Welcome back</span>,
+                        <span style="color: #ff9900">
+                            {{ auth()->user()->name }}<span style="color: #ff9900"> </span>
+                    </h2>
+                    <h5>Terimakasih sudah join bersama website kami <br>
+                        apakah anda tertarik membuat teori film yang <br>
+                        pernah anda tonton ?
+                    </h5>
+                @else
+                    <h4>Pusing cari website yang memberikan informasi <br>
+                        menarik tentang movie yang paling lengkap?<br>
+                        Do You Want To Know Movie solusinya</h4>
+                    <br>
+                    <h5>Website yang memberikan segala informasi
+                        tentang <br> movie terbaru maupun lawas</h5>
+                @endauth
+            @endif
 
-            <!-- bagian film -->
-            <div class="row mb-4" id="populer">
-                <h3 class="text-center mb-4">
-                    Film Populer
-                </h3>
-                @foreach($populer as $pop)
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="{{ 'https://image.tmdb.org/t/p/w400/'.$pop['poster_path'] }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $pop['title'] }} </h5>
-                            <span class="ml-1 fs-6">{{ $pop['vote_average'] * 10 . '%' }} </span>
-                            <span class="mx-2 fs-6"> | </span>
-                            <span>{{ \Carbon\Carbon::parse($pop['release_date'])->format('M d, Y') }}  </span>
-                            <p class="card-text">
-                                @foreach($pop['genre_ids'] as $genre)
-                                 {{ $genres->get($genre) }}@if (!$loop->last), @endif
-                                @endforeach
-                            </p>
-                            <a href="/home/{{ $pop['title'] }}" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach   
-            </div>
-
-            <!-- pagination film -->
-            <div class="row d-flex justify-content-end">
-                {{ $posts->links() }}
-            </div>
         </div>
+
+
+        @if (Route::has('login'))
+            @auth
+                <button type="button" class="btn btn-warning rounded-pill btn-lg" style="width: 250px"><span
+                        class="spnB"><a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">Create
+                            Post</a>
+                    </span></button>
+            @else
+                <button type="button" class="btn btn-warning rounded-pill btn-lg" style="width: 250px"><span
+                        class="spnB"><a class="nav-link" aria-current="page" href="{{ route('login') }}">Read More</a>
+                    </span></button>
+            @endauth
+        @endif
+
     </div>
 
-@endsection
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
+</body>
 
+</html>

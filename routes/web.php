@@ -16,11 +16,11 @@ use App\Http\Controllers\DashboardPostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// penghubung ke about
+// penghubung ke Home
 Route::get('/', function () {
-    return view('about', [
-        "title" => "About",
-        "active" => 'about'
+    return view('home', [
+        "title" => "Home",
+        "active" => 'home'
     ]);
 });
 
@@ -29,11 +29,11 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// penghubung ke home
-Route::get('/home', [PostController::class, 'index']);
+// penghubung ke posts
+Route::get('/posts', [PostController::class, 'index']);
 
 // single post
-Route::get('home/{post:slug}', [PostController::class, 'show']);
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 // penghubung ke kategori
 Route::get('/category', function () {
