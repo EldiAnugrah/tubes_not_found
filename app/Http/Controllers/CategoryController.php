@@ -25,7 +25,6 @@ class CategoryController extends Controller
         $genres = collect($genreArray)->mapWithKeys(function ($genre) {
             return [$genre['id'] => $genre['name']];
         });
-        dump($genres);
 
         return view('category', [
             "title" => 'Category',
