@@ -24,17 +24,17 @@ class PostController extends Controller
 
         // api categori / genre
         $genreArray = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/genre/movie/list')->json()['genres'];
-        $genres = collect($genreArray)->mapWithKeys(function ($genre){
-            return [$genre['id']=> $genre['name']];
+        $genres = collect($genreArray)->mapWithKeys(function ($genre) {
+            return [$genre['id'] => $genre['name']];
         });
 
         // pagination film api
         $popularMovies = $this->paginate($popularMovies, 6);
         $popularMovies->path('');
 
-        return view('home', [
-            "title" => "Home",
-            "active" => 'home',
+        return view('posts', [
+            "title" => "Posts",
+            "active" => 'posts',
             "posts" => Post::latest()->paginate(6)->withQueryString(),
             "populer" => $popularMovies,
             "genres" => $genres
@@ -47,9 +47,9 @@ class PostController extends Controller
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $total = count($items);
         $currentpage = $page;
-        $offset = ($currentpage * $perPage) - $perPage ;
-        $itemstoshow = array_slice($items , $offset , $perPage);
-        return new LengthAwarePaginator($itemstoshow ,$total ,$perPage);
+        $offset = ($currentpage * $perPage) - $perPage;
+        $itemstoshow = array_slice($items, $offset, $perPage);
+        return new LengthAwarePaginator($itemstoshow, $total, $perPage);
     }
 
     /**
@@ -81,10 +81,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post',[
+        return view('post', [
             "title" => "Single Post",
-            "active"=> 'home',
-            "post"=> $post
+            "active" => 'home',
+            "post" => $post
         ]);
     }
 
