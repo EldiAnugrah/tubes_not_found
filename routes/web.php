@@ -4,6 +4,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardPostController;
 
 /*
@@ -36,13 +37,7 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 // penghubung ke kategori
-Route::get('/category', function () {
-    return view('category', [
-        "title" => 'Category',
-        'active' => 'category',
-        'categories' => Category::all()
-    ]);
-})->middleware('auth');
+Route::get('/category',[CategoryController::class,'index'])->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

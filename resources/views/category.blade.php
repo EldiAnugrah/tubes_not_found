@@ -4,13 +4,13 @@
 
         <div class="col-8 justify-center btn-category">
             <div class="row">
-                @foreach ($categories as $category)
+                @foreach ($categories as $genre)
                 <div class="col-md-4">
-                    <a href="/posts?category={{ $category->slug }}">
+                    <a href="">
                     <div class="card bg-dark text-white">
-                        <img src="https://source.unsplash.com/500x500?{{ $category->name }}" class="card-img" alt="{{ $category->name }}">
+                        <img src="https://source.unsplash.com/500x500?{{ $genre }}" class="card-img" alt="{{ $genre }}">
                         <div class="card-img-overlay d-flex align-items-center p-0">
-                            <h5 class="card-title text-center flex-fill p-4 fs-3" style="background-color:rgba(0,0,0,0.7) ">{{ $category->name }} </h5>
+                            <h5 class="card-title text-center flex-fill p-4 fs-3" style="background-color:rgba(0,0,0,0.7) ">{{ $genre }}</h5>
                         </div>
                     </div>
                     </a>
