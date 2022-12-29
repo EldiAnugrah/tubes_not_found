@@ -15,12 +15,18 @@
             </div>
 
             {{-- search --}}
-            <form class="d-flex ms-auto navsearch" role="search">
+            <form class="d-flex ms-auto navsearch" action="/posts" >
+                <!-- pengkondisian search -->
+                @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+                @elseif(request('author'))
+                <input type="hidden" name="author" value="{{ request('author') }}">
+                @endif
                 <div class="input-group">
                     <div class="form-outline">
-                        <input type="search" id="search-input" class="form-control" placeholder="Cari Berita Film" />
+                        <input type="text" class="form-control" placeholder="Cari Berita Film" name="search" value="{{ request('search') }}"/>
                     </div>
-                    <button type="button" class="btn" id="search-button">
+                    <button type="submit" class="btn" id="search-button"  >
                         <i class="bi bi-search"></i>
                     </button>
                 </div>

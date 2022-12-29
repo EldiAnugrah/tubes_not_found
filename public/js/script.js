@@ -1,49 +1,31 @@
-function searchMovie() {
-    $('#movie-list').html('');
+$('#detail').on('click','.see-detail', function (){
     $.ajax({
-        url: 'http://omdbapi.com',
+        url: 'https://api.themoviedb.org/3/movie/',
         type: 'get',
         dataType: 'json',
-        data: {
-            'apikey' : 'b9411804',
-            's' : $('#search-input').val()
+        data :{
+            'apikey' : 'cdad6ebd3dfb5513b13f66e45656e640',
         },
-        success : function(result){
-            if (result.Response == "True") {
-                let movies = result.Search;
-
-                $.each(movies, function(i,data) {
-                    $('#movie-list').append(`
-                    <div class="col-md-4")>
-                        <div class="card mb-3">
-                            <img src="`+ data.Poster +`" class="card-img-top" alt="...">
-                            <div class="card-body">
-                            <h5 class="card-title">`+ data.Title +`</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">`+ data.Year +`</h6>
-                            <a href="#" class="card-link see-detail" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="`+ data.imdbID +`">See Detail</a>
+        success:function(movie){
+            if (movie.Response === "True") {
+                $('.modal-body').html(`
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="`+ movie.poster_path +`" class="img-fluid">
+                            </div>
+                            <div class="col-md-8">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><h3>`+ movie.original_title +`</h3></li>
+                                    <li class="list-group-item">Released : `+ movie.release_date +`</li>
+                                    <li class="list-group-item">Genre : `+ movie.genre_ids +`</li>
+                                    <li class="list-group-item">Genre : `+ movie.overview +`</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    `)
-                });
-
-                $('#search-input').val('');
-            }else{
-                $('#movie-list').html(`
-                    <div class="col">
-                    <h1 class = "text-center">`+ result.Error +`</h1>
-                `)
+                `);
             }
         }
     });
-}
-
-$('#search-button').on('click', function (){
-    searchMovie();
-});
-
-$('#search-input').on('keyup', function(event){
-    if(event.keyCode === 13){
-        searchMovie();
-    }
 });

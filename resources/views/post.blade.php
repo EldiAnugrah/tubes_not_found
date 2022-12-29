@@ -8,7 +8,7 @@
             <div class="col-md-8" style="" >
         <h1 class="mb-3">{{ $post->title}}</h1>
 
-        <p>By. <a href="" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
+        <p>By. <a href="/posts?author={{ $post->author->name }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
 
         @if($post->image)
         <div style="max-height: 350px; overflow:hidden;">
@@ -23,7 +23,7 @@
         {!! $post->body !!}
         </article>
 
-        <a href="/home" class="d-block mt-3">Back to Posts</a>
+        <a href="/posts" class="d-block mt-3">Back to Posts</a>
         </div>
                 
             </div>
