@@ -14,6 +14,9 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile.edit') }}"> Profile</a>
+            </li>
+            <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="nav-link" href="route('logout')"

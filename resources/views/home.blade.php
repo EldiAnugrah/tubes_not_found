@@ -42,7 +42,7 @@
                                 <div class="nav-item2 dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                         aria-expanded="false">
-                                        Welcome Back, <strong>{{ auth()->user()->name }}</strong>
+                                        <strong>{{ auth()->user()->name }}</strong>
                                     </a>
 
                                     <ul class="dropdown-menu">
