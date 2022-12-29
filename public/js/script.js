@@ -1,31 +1,85 @@
-$('#detail').on('click','.see-detail', function (){
+// cari gambar input
+function searchMovie() {
+    $('#movie-list').html('');
     $.ajax({
-        url: 'https://api.themoviedb.org/3/movie/',
+        url: 'http://omdbapi.com',
         type: 'get',
         dataType: 'json',
-        data :{
-            'apikey' : 'cdad6ebd3dfb5513b13f66e45656e640',
+        data: {
+            'apikey' : 'b9411804',
+            's' : $('#search-input').val()
         },
-        success:function(movie){
-            if (movie.Response === "True") {
-                $('.modal-body').html(`
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="`+ movie.poster_path +`" class="img-fluid">
-                            </div>
-                            <div class="col-md-8">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><h3>`+ movie.original_title +`</h3></li>
-                                    <li class="list-group-item">Released : `+ movie.release_date +`</li>
-                                    <li class="list-group-item">Genre : `+ movie.genre_ids +`</li>
-                                    <li class="list-group-item">Genre : `+ movie.overview +`</li>
-                                </ul>
+        success : function(result){
+            if (result.Response == "True") {
+                let movies = result.Search;
+
+                $.each(movies, function(i,data) {
+                    $('#movie-list').append(`
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <a href="#" class="card-link select" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="`+ data.imdbID +`">
+                                    <img src="`+ data.Poster +`" class="card-img-top" alt="...">
+                                </a>
                             </div>
                         </div>
-                    </div>
-                `);
+                    `)
+                });
+
+                $('#search-input').val('');
+            }else{
+                $('#movie-list').html(`
+                    <div class="col">
+                    <h1 class = "text-center">`+ result.Error +`</h1>
+                `)
             }
         }
     });
+}
+
+$('#search-button').on('click', function (){
+    searchMovie();
 });
+
+$('#search-input').on('keyup', function(event){
+    if(event.keyCode === 13){
+        searchMovie();
+    }
+});
+
+// select img
+$('#movie-list').on('click','select',function(){
+    $.ajax({
+        url: 'http://omdbapi.com',
+        type: 'get',
+        dataType: 'json',
+        data :{
+            'apikey' : 'b9411804',
+            'i' : $(this).data('id')
+        },
+        success:function(image){
+            $('#selected-image').val(`
+                <img src="`+ image.Poster +`">
+            `)
+        }
+    })
+})
+
+// slider
+$(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
+})
