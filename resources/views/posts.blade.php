@@ -46,38 +46,41 @@
             {{ $posts->links() }}
         </div>
 
-        <!-- bagian film -->
-        <div class="row mb-4" id="populer">
-            <h3 class="text-center mb-4">
-                Film Populer
-            </h3>
-            @foreach ($populer as $pop)
-                <div class="col-md-4 mb-3">
-                    <div class="card" id="detail">
-                        <img src="{{ 'https://image.tmdb.org/t/p/w400/' . $pop['poster_path'] }}" class="card-img-top"
-                            alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $pop['title'] }} </h5>
-                            <span class="ml-1 fs-6">{{ $pop['vote_average'] * 10 . '%' }} </span>
-                            <span class="mx-2 fs-6"> | </span>
-                            <span>{{ \Carbon\Carbon::parse($pop['release_date'])->format('M d, Y') }} </span>
-                            <p class="card-text">
-                                @foreach ($pop['genre_ids'] as $genre)
-                                    {{ $genres->get($genre) }}@if (!$loop->last)
-                                        ,
-                                    @endif
-                                @endforeach
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        <hr>
 
-        <!-- pagination film -->
-        <div class="row d-flex justify-content-end">
-            {{ $posts->links() }}
-        </div>
+        <!-- bagian film -->
+        <section id="film-popler">
+                <div class="row mb-4" id="populer">
+                    <h3 class="text-center mb-4">
+                        Film Populer
+                    </h3>
+
+                    <!-- slider -->
+                    <div class="owl-carousel owl-theme">
+                        @foreach ($populer as $pop)
+                                <div class="card" id="detail">
+                                    <img src="{{ 'https://image.tmdb.org/t/p/w400/' . $pop['poster_path'] }}" class="card-img-top"
+                                        alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $pop['title'] }} </h5>
+                                        <span class="ml-1 fs-6">{{ $pop['vote_average'] * 10 . '%' }} </span>
+                                        <span class="mx-2 fs-6"> | </span>
+                                        <span>{{ \Carbon\Carbon::parse($pop['release_date'])->format('M d, Y') }} </span>
+                                        <p class="card-text">
+                                            @foreach ($pop['genre_ids'] as $genre)
+                                                {{ $genres->get($genre) }}@if (!$loop->last)
+                                                    ,
+                                                @endif
+                                            @endforeach
+                                        </p>
+                                    </div>
+                                </div>
+                        @endforeach
+                    </div>
+                    
+                </div>
+        </section>
+        
     </div>
     </div>
 @endsection

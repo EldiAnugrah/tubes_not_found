@@ -29,8 +29,8 @@ class PostController extends Controller
         });
 
         // pagination film api
-        $popularMovies = $this->paginate($popularMovies, 6);
-        $popularMovies->path('');
+        // $popularMovies = $this->paginate($popularMovies, 6);
+        // $popularMovies->path('');
 
         // search
 
@@ -45,15 +45,15 @@ class PostController extends Controller
     }
 
     // fungsi pagination api
-    public function paginate($items, $perPage = 6, $page = null)
-    {
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        $total = count($items);
-        $currentpage = $page;
-        $offset = ($currentpage * $perPage) - $perPage;
-        $itemstoshow = array_slice($items, $offset, $perPage);
-        return new LengthAwarePaginator($itemstoshow, $total, $perPage);
-    }
+    // public function paginate($items, $perPage = 6, $page = null)
+    // {
+    //     $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+    //     $total = count($items);
+    //     $currentpage = $page;
+    //     $offset = ($currentpage * $perPage) - $perPage;
+    //     $itemstoshow = array_slice($items, $offset, $perPage);
+    //     return new LengthAwarePaginator($itemstoshow, $total, $perPage);
+    // }
 
     /**
      * Show the form for creating a new resource.
