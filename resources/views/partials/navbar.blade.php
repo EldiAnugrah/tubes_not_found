@@ -16,6 +16,12 @@
 
             {{-- search --}}
             <form class="d-flex ms-auto navsearch" action="/posts" >
+                <!-- pengkondisian search -->
+                @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+                @elseif(request('author'))
+                <input type="hidden" name="author" value="{{ request('author') }}">
+                @endif
                 <div class="input-group">
                     <div class="form-outline">
                         <input type="text" class="form-control" placeholder="Cari Berita Film" name="search" value="{{ request('search') }}"/>

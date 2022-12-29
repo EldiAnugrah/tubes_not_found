@@ -41,6 +41,21 @@ class DatabaseSeeder extends Seeder
             'slug' => 'drama'
         ]);
 
+        Category::create([
+            'name' => 'Comedy',
+            'slug' => 'comedy'
+        ]);
+
+        Category::create([
+            'name' => 'Romance',
+            'slug' => 'romance'
+        ]);
+
+        Category::create([
+            'name' => 'Action',
+            'slug' => 'action'
+        ]);
+
         Post::factory(20)->create();
     }
 }

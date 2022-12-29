@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $popularMovies = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/genre/movie/list')->json()['genres'];
+        //
     }
 
     /**

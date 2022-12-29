@@ -32,10 +32,13 @@ class PostController extends Controller
         $popularMovies = $this->paginate($popularMovies, 6);
         $popularMovies->path('');
 
+        // search
+
+
         return view('posts', [
             "title" => "Posts",
             "active" => 'posts',
-            "posts" => Post::latest()->paginate(6)->withQueryString(),
+            "posts" => Post::latest()->filter(request(['search','category','author']))->paginate(6)->withQueryString(),
             "populer" => $popularMovies,
             "genres" => $genres
         ]);

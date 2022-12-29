@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -13,12 +14,12 @@ class Post extends Model
     protected $guarded = ['id'];
     protected $with = ['category', 'author'];
 
+    // untuk fungsi search
     public function category() 
     {
         return $this->belongsTo(Category::class);
     }
 
-    // kodingan untuk masuk sebagai author
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -42,8 +43,9 @@ class Post extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search){
-            return $query->where('title', 'like', '%' . $search . '%')->orWhere('body', 'like', '%' . $search . '%');
-        });
+            return $query->where('title', 'like', '%' . $search . '%')
+                         ->orWhere('body', 'like', '%' . $search . '%');
+            });
 
         $query->when($filters['category'] ?? false, function($query, $category){
             return $query->whereHas('category', function($query) use ($category){
@@ -53,7 +55,7 @@ class Post extends Model
 
         $query->when($filters['author'] ?? false, fn($query, $author)=>
             $query->whereHas('author',fn($query)=>
-                $query->where('username',$author)
+                $query->where('name',$author)
             )
         );
     }

@@ -6,6 +6,7 @@
             <h3 class="text-center mb-4">
                 Berita Film
             </h3>
+            @if($posts->count())
             @foreach ($posts as $post)
                 <div class="col-md-4 mb-3">
                     <div class="card">
@@ -26,14 +27,19 @@
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }} </h5>
+                            <a href="/posts?author={{ $post->author->name }}" class="fs-6 text-muted" style="text-decoration:none;">by . {{ $post->author->name }} </a>
                             <p class="card-text fs-6">{{ $post->excerpt }}</p>
-                            <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Go somewhere</a>
+                            <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read</a>
                         </div>
                     </div>
                 </div>
             @endforeach
 
         </div>
+
+        @else
+        <p class="text-center fs-4">No posts found.</p>
+        @endif
 
         <!-- pagination post -->
         <div class="row d-flex justify-content-end">
@@ -47,7 +53,7 @@
             </h3>
             @foreach ($populer as $pop)
                 <div class="col-md-4 mb-3">
-                    <div class="card">
+                    <div class="card" id="detail">
                         <img src="{{ 'https://image.tmdb.org/t/p/w400/' . $pop['poster_path'] }}" class="card-img-top"
                             alt="...">
                         <div class="card-body">
@@ -62,7 +68,6 @@
                                     @endif
                                 @endforeach
                             </p>
-                            <a href="/posts/{{ $pop['title'] }}" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
