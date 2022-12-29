@@ -22,15 +22,15 @@
                         </a>
                     </li>
                     @auth
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a class="nav-link" href="route('logout')"
-                                onclick="event.preventDefault();
+                        <li class="nav-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a class="nav-link" href="route('logout')"
+                                    onclick="event.preventDefault();
                               this.closest('form').submit();">
-                                <i class="bi bi-box-arrow-right"></i><span></span>Logout</a>
-                        </form>
-                    </li>
+                                    <i class="bi bi-box-arrow-right"></i><span></span>Logout</a>
+                            </form>
+                        </li>
                     @endauth
                 </ul>
             </div>

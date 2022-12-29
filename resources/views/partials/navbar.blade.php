@@ -15,29 +15,23 @@
             </div>
 
             {{-- search --}}
-            <form class="d-flex ms-auto navsearch" action="/posts" >
+            <form class="d-flex ms-auto navsearch" action="/posts">
                 <!-- pengkondisian search -->
-                @if(request('category'))
-                <input type="hidden" name="category" value="{{ request('category') }}">
+                @if (request('category'))
+                    <input type="hidden" name="category" value="{{ request('category') }}">
                 @elseif(request('author'))
-                <input type="hidden" name="author" value="{{ request('author') }}">
+                    <input type="hidden" name="author" value="{{ request('author') }}">
                 @endif
                 <div class="input-group">
                     <div class="form-outline">
-                        <input type="text" class="form-control" placeholder="Cari Berita Film" name="search" value="{{ request('search') }}"/>
+                        <input type="text" class="form-control" placeholder="Cari Berita Film" name="search"
+                            value="{{ request('search') }}" />
                     </div>
-                    <button type="submit" class="btn" id="search-button"  >
+                    <button type="submit" class="btn" id="search-button">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
             </form>
 
-            {{--  profile --}}
-            <div class="navbar-nav">
-                <div class="nav-item text-nowrap d-flex">
-                    <a class="nav-link px-3" href="#"> <img class='img-fluid rounded-circle' src="img/profile.jpg"
-                            style="width: 50px; height:40px" alt=""></a>
-                </div>
-            </div>
         </div>
     </nav>
