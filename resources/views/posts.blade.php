@@ -9,7 +9,7 @@
             @if($posts->count())
             @foreach ($posts as $post)
                 <div class="col-md-4 mb-3">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="position-absolute px-3 py-2" style="background-color: rgba(0,0,0,0.7)">
                             <a href="/posts?category={{ $post->category->slug }}" class=" text-white text-decoration-none">
                                 {{ $post->category->name }}
@@ -29,7 +29,7 @@
                             <h5 class="card-title">{{ $post->title }} </h5>
                             <a href="/posts?author={{ $post->author->name }}" class="fs-6 text-muted" style="text-decoration:none;">by . {{ $post->author->name }} </a>
                             <p class="card-text fs-6">{{ $post->excerpt }}</p>
-                            <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read</a>
+                            <a href="/posts/{{ $post->slug }}" class="btn btn-warning">Read</a>
                         </div>
                     </div>
                 </div>
