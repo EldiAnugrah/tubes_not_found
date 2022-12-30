@@ -21,7 +21,14 @@
                                     class="bi bi-grid"></i></span>Category
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active === 'gacha' ? 'active' : '' }}" href="/gacha">
+                            <span data-feather="shopping-cart" class="align-text-bottom"><i
+                                    class="bi bi-grid"></i></span>Gacha
+                        </a>
+                    </li>
                     @auth
+                    <hr>
                         <li class="nav-item">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

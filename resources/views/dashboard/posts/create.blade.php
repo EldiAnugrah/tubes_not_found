@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
       <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug') }}">
+      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" disable readonly required value="{{ old('slug') }}">
       @error('slug')
       <div class="invalid-feedback">
         {{ $message }}
@@ -67,7 +67,6 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
