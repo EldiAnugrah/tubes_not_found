@@ -24,14 +24,6 @@ Route::get('/', function () {
     ]);
 });
 
-//penghubung ke about
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        "active" => 'about'
-    ]);
-});
-
 //penghubung Login
 Route::get('/login', function () {
     return view('login');
