@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class PostController extends Controller
         return view('posts', [
             "title" => "Posts",
             "active" => 'posts',
-            "posts" => Post::latest()->filter(request(['search','category','author']))->paginate(6)->withQueryString(),
+            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString(),
             "populer" => $popularMovies,
             "genres" => $genres
         ]);
@@ -84,9 +85,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $comment = Comment::all();
         return view('post', [
             "title" => "Single Post",
             "active" => 'posts',
+            "comment" =>  $comment,
             "post" => $post
         ]);
     }
@@ -123,5 +126,13 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function insertComment(Request $request)
+    {
+        $request->request->add(['user_id' => auth()->user()->id]);
+        $comment = Comment::create($request->all());
+        return redirect()->back()->with('success', 'add comment');
+        // dd($request->all());
     }
 }

@@ -4,7 +4,7 @@
     <div class="col-lg-8 justify">
         <div class="row mb-4" id="review">
             <h3 class="text-center mb-4">
-                Berita Film
+                Teori-Teori
             </h3>
             @if ($posts->count())
                 @foreach ($posts as $post)
