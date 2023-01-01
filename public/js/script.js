@@ -1,69 +1,3 @@
-// cari gambar input
-function searchMovie() {
-    $('#movie-list').html('');
-    $.ajax({
-        url: 'http://omdbapi.com',
-        type: 'get',
-        dataType: 'json',
-        data: {
-            'apikey' : 'b9411804',
-            's' : $('#search-input').val()
-        },
-        success : function(result){
-            if (result.Response == "True") {
-                let movies = result.Search;
-
-                $.each(movies, function(i,data) {
-                    $('#movie-list').append(`
-                        <div class="col-md-4">
-                            <div class="card mb-3">
-                                <a href="#" class="card-link select" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="`+ data.imdbID +`">
-                                    <img src="`+ data.Poster +`" class="card-img-top" alt="...">
-                                </a>
-                            </div>
-                        </div>
-                    `)
-                });
-
-                $('#search-input').val('');
-            }else{
-                $('#movie-list').html(`
-                    <div class="col">
-                    <h1 class = "text-center">`+ result.Error +`</h1>
-                `)
-            }
-        }
-    });
-}
-
-$('#search-button').on('click', function (){
-    searchMovie();
-});
-
-$('#search-input').on('keyup', function(event){
-    if(event.keyCode === 13){
-        searchMovie();
-    }
-});
-
-// select img
-$('.select').on('click',function(){
-    $.ajax({
-        url: 'http://omdbapi.com',
-        type: 'get',
-        dataType: 'json',
-        data :{
-            'apikey' : 'b9411804',
-            'i' : $(this).data('id')
-        },
-        success:function(image){
-            $('#selected-image').append(`
-                <img src="`+ image.Poster +`">
-            `)
-        }
-    })
-});
-
 // slider
 $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
@@ -85,131 +19,37 @@ $(document).ready(function(){
 });
 
 // gacha film
-// ISI VARIABEL TIMER UNTUK WAKTU MUNDUR
-let timer = 5
-// SELEKSI ELEMENT DENGAN ID random-number
-const hasil = document.getElementById('hasil-gacha');
+async function getFilm(){
+    let angkaAcak = Math.floor(Math.random() * 20); // mengacak data api film
+    let pageAcak = Math.floor(Math.random() * 532); // mengacak halaman api
+    console.log(angkaAcak);
+    const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=cdad6ebd3dfb5513b13f66e45656e640&page=' + pageAcak); // memanggil api
+    const data = await response.json();
+    const film = data.results[angkaAcak];
 
-// SELEKSI TOMBOL
-const button = document.getElementById('btn-gacha');
+    const genreArray = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=cdad6ebd3dfb5513b13f66e45656e640'); // memanggil genre
+    const genres = 
 
-const createRandomLength = function(stringLength = 1) {
-    let randomLength = '';
-    
-    // ASSIGNMENT KARAKTERNYA
-    let characters = '7';
-    
-    // PENGULANGAN YANG AKAN MENGHASILKAN RANDOM KARAKTER
-    for (let i = 0 ; i < stringLength; i++) {
-        let randomCharacters = 
-        randomLength += characters.charAt(Math.floor(Math.random()  * characters.length))
-    }
-    
-    // KEMBALIKAN NILAINYA
-    return randomLength;
+    console.log(film);
+    gachaMovie(film); // memanggil fungsi gacha movie
 }
 
-// FUNCTION UNTUK GENERATE RANDOM KARAKTER
-const createRandomString = function(stringLength = createRandomLength()) {
-    // ASSIGNMENT AWAL UNTUK MENGHASILKAN RANDOM KARAKTER
-    let randomString = 'tt';
-    
-    // ASSIGNMENT KARAKTERNYA
-    let characters = '1234567890';
-    
-    // PENGULANGAN YANG AKAN MENGHASILKAN RANDOM KARAKTER
-    for (let i = 0 ; i < stringLength; i++) {
-        let randomCharacters = 
-        randomString += characters.charAt(Math.floor(Math.random()  * characters.length))
-    }
-    
-    // KEMBALIKAN NILAINYA
-    return randomString;
+function gachaMovie(film){
+    // pendefeinisian
+    const img = document.getElementById('img_gacha');
+    const title = document.getElementById('title_gacha');
+    const released = document.getElementById('released_gacha');
+    const rating = document.getElementById('rating_gacha');
+    const sinopsis = document.getElementById('sinopsis_gacha');
+
+    // mengisikan data
+    img.setAttribute('src',`https://image.tmdb.org/t/p/w400/.` + `${film.poster_path}`);
+    title.innerText = `Title : ${film.title}`;
+    released.innerText = `Released : ${film.release_date}`;
+    rating.innerText = `Rating : ${film.vote_average}`;
+    sinopsis.innerText = `Sinopsis : ${film.overview}`;
 }
 
-// pencarian gacha movie
-function gachaMovie($hasil = createRandomString()) {
-    console.log($hasil);
-    $('#hasil-gacha').html('');
-    $.ajax({
-        url: 'http://omdbapi.com',
-        type: 'get',
-        dataType: 'json',
-        data: {
-            'apikey' : 'b9411804',
-            'i' : $hasil
-        },
-        success : function(result){
-            if (result.Response == "True") {
-                    $('#hasil-gacha').html(`
-                    <div class="col-md-4")>
-                        <div class="card mb-3">
-                            <img src="`+ result.Poster +`" class="card-img-top" alt="...">
-                            <div class="card-body">
-                            <h5 class="card-title">`+ result.Title +`</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">`+ result.Year +`</h6>
-                            <a href="#" class="card-link see-detail" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="`+ result.imdbID +`">See Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    `)
-            }else{
-                $('#hasil-gacha').html(`
-                    <div class="col">
-                    <h1 class = "text-center">Coba Lagi..</h1>
-                `)
-            }
-        }
-    });
-}
-
-// JIKA TOMBOL DI KLIK, JALANKAN FUNGSI COUNDOWN DAN BUAT RANDOM KARAKTER
-button.addEventListener('click', function() {
-    
-    const countdown = setInterval(function(){
-        $('#hasil-gacha').html(`text akan di generate dalam waktu ${timer--}`)
-        
-        if (timer < 0) {
-            clearInterval(countdown);
-            // randomLength1.innerHTML = `length anda ${createRandomLength()}`;
-            $('#hasil-gacha').html(`kode anda ${createRandomString()}`) 
-            gachaMovie();
-        }
-    }, 1000);
-        
-});
-
-// modal gacha
-$('#hasil-gacha').on('click','.see-detail', function (){
-    $.ajax({
-        url: 'http://omdbapi.com',
-        type: 'get',
-        dataType: 'json',
-        data :{
-            'apikey' : 'b9411804',
-            'i' : $(this).data('id')
-        },
-        success:function(movie){
-            if (movie.Response === "True") {
-                $('.modal-body').html(`
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="`+ movie.Poster +`" class="img-fluid">
-                            </div>
-                            <div class="col-md-8">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><h3>`+ movie.Title +`</h3></li>
-                                    <li class="list-group-item">Released : `+ movie.Release +`</li>
-                                    <li class="list-group-item">Genre : `+ movie.Genre +`</li>
-                                    <li class="list-group-item">Director : `+ movie.Director +`</li>
-                                    <li class="list-group-item">Actors : `+ movie.Actors +`</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                `);
-            }
-        }
-    });
+$('#btn-gacha').on('click', function(){
+    getFilm();
 });
