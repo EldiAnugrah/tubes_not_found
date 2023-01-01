@@ -24,14 +24,6 @@ Route::get('/', function () {
     ]);
 });
 
-//penghubung ke about
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        "active" => 'about'
-    ]);
-});
-
 //penghubung Login
 Route::get('/login', function () {
     return view('login');
@@ -75,3 +67,4 @@ require __DIR__ . '/auth.php';
 // kodingan kelola post
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+Route::post('posts/{post:slug}', [PostController::class, 'insertComment'])->middleware('auth');

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web Slebew</title>
+    <title>{{ $tittle ?? config('app.name') }}</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="icon" href="../../img/LogoNotFound.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,36 +28,25 @@
                             <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item mx-5">
-                            <a class="nav-link" aria-current="page" href="/about">AboutUs</a>
-                        </li>
-                        <li class="nav-item mx-5">
                             <a class="nav-link" href="/posts">Posts</a>
                         </li>
                         <li class="nav-item2 mx-5">
                             <a class="nav-link" aria-current="page" href="/category">Category</a>
                         </li>
-
                         @if (Route::has('login'))
                             @auth
-                                <div class="nav-item2 dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <strong>{{ auth()->user()->name }}</strong>
-                                    </a>
-
-                                    <ul class="dropdown-menu">
-                                        <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
-                                        <li>
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                                <a class="nav-link" href="route('logout')"
-                                                    onclick="event.preventDefault();
-                                                  this.closest('form').submit();">
-                                                    Logout</a>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <li class="nav-item2 mx-5">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="nav-item2 mx-5">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a class="nav-link" href="route('logout')"
+                                            onclick="event.preventDefault();
+                                      this.closest('form').submit();">
+                                            <i class="bi bi-box-arrow-right"></i><span></span>Logout</a>
+                                    </form>
+                                </li>
                             @else
                                 <li class="nav-item2 mx-5">
                                     <a class="nav-link" aria-current="page" href="{{ route('login') }}">Login</a>
@@ -69,6 +58,7 @@
                                 @endif
                             @endauth
                         @endif
+
                     </ul>
                 </div>
             </div>
