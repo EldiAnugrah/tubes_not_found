@@ -1,69 +1,3 @@
-// cari gambar input
-function searchMovie() {
-    $('#movie-list').html('');
-    $.ajax({
-        url: 'http://omdbapi.com',
-        type: 'get',
-        dataType: 'json',
-        data: {
-            'apikey' : 'b9411804',
-            's' : $('#search-input').val()
-        },
-        success : function(result){
-            if (result.Response == "True") {
-                let movies = result.Search;
-
-                $.each(movies, function(i,data) {
-                    $('#movie-list').append(`
-                        <div class="col-md-4">
-                            <div class="card mb-3">
-                                <a href="#" class="card-link select" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="`+ data.imdbID +`">
-                                    <img src="`+ data.Poster +`" class="card-img-top" alt="...">
-                                </a>
-                            </div>
-                        </div>
-                    `)
-                });
-
-                $('#search-input').val('');
-            }else{
-                $('#movie-list').html(`
-                    <div class="col">
-                    <h1 class = "text-center">`+ result.Error +`</h1>
-                `)
-            }
-        }
-    });
-}
-
-$('#search-button').on('click', function (){
-    searchMovie();
-});
-
-$('#search-input').on('keyup', function(event){
-    if(event.keyCode === 13){
-        searchMovie();
-    }
-});
-
-// select img
-$('#movie-list').on('click','select',function(){
-    $.ajax({
-        url: 'http://omdbapi.com',
-        type: 'get',
-        dataType: 'json',
-        data :{
-            'apikey' : 'b9411804',
-            'i' : $(this).data('id')
-        },
-        success:function(image){
-            $('#selected-image').val(`
-                <img src="`+ image.Poster +`">
-            `)
-        }
-    })
-})
-
 // slider
 $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
@@ -82,4 +16,40 @@ $(document).ready(function(){
             }
         }
     })
-})
+});
+
+// gacha film
+async function getFilm(){
+    let angkaAcak = Math.floor(Math.random() * 20); // mengacak data api film
+    let pageAcak = Math.floor(Math.random() * 532); // mengacak halaman api
+    console.log(angkaAcak);
+    const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=cdad6ebd3dfb5513b13f66e45656e640&page=' + pageAcak); // memanggil api
+    const data = await response.json();
+    const film = data.results[angkaAcak];
+
+    const genreArray = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=cdad6ebd3dfb5513b13f66e45656e640'); // memanggil genre
+    const genres = 
+
+    console.log(film);
+    gachaMovie(film); // memanggil fungsi gacha movie
+}
+
+function gachaMovie(film){
+    // pendefeinisian
+    const img = document.getElementById('img_gacha');
+    const title = document.getElementById('title_gacha');
+    const released = document.getElementById('released_gacha');
+    const rating = document.getElementById('rating_gacha');
+    const sinopsis = document.getElementById('sinopsis_gacha');
+
+    // mengisikan data
+    img.setAttribute('src',`https://image.tmdb.org/t/p/w400/.` + `${film.poster_path}`);
+    title.innerText = `Title : ${film.title}`;
+    released.innerText = `Released : ${film.release_date}`;
+    rating.innerText = `Rating : ${film.vote_average}`;
+    sinopsis.innerText = `Sinopsis : ${film.overview}`;
+}
+
+$('#btn-gacha').on('click', function(){
+    getFilm();
+});

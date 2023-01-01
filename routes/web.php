@@ -44,6 +44,14 @@ Route::get('/category', function () {
     ]);
 })->middleware('auth');
 
+// penghubung ke gacha film
+Route::get('/gacha', function () {
+    return view('gacha', [
+        "title" => 'Gacha',
+        'active' => 'posts'
+    ]);
+})->middleware('auth');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

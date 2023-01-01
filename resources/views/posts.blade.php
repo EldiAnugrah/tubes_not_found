@@ -6,6 +6,7 @@
             <h3 class="text-center mb-4">
                 Teori-Teori
             </h3>
+
             @if ($posts->count())
                 @foreach ($posts as $post)
                     <div class="col-md-4 mb-3">
