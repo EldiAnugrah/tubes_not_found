@@ -4,11 +4,11 @@
 <table>
 <tr>
 <th>Job Desk</th>
-<th>Project Manager</th>
+<th>Nama</th>
 <th>NRP</th>
 </tr>
 <tr>
-<td>Nama</td>
+<td>Project Manage</td>
 <td>Eldi Anugrah</td>
 <td>203040031</td>
 </tr>
