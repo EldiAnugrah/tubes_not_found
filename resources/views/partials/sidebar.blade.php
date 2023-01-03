@@ -24,11 +24,11 @@
                     <li class="nav-item">
                         <a class="nav-link {{ $active === 'gacha' ? 'active' : '' }}" href="/gacha">
                             <span data-feather="shopping-cart" class="align-text-bottom"><i
-                                    class="bi bi-grid"></i></span>Gacha
+                                    class="bi bi-dice-5"></i></i></span>Gacha
                         </a>
                     </li>
                     @auth
-                    <hr>
+                        <hr>
                         <li class="nav-item">
                             <a class="nav-link {{ $active === 'dashboard' ? 'active' : '' }}" href="/dashboard">
                                 <span data-feather="shopping-cart" class="align-text-bottom"><i

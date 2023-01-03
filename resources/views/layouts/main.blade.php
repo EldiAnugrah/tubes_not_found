@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $tittle ?? config('app.name') }}</title>
+    @section('title')
+        {{ $active }}
+    @endsection
+
     <link rel="icon" href="../../img/LogoNotFound.png">
     <script src="https://unpkg.com/feather-icons"></script>
     {{-- bootstrap icons --}}
@@ -27,7 +30,7 @@
     <script type="text/javascript" src="/js/trix.js"></script>
 
     <style>
-        trix-toolbar [data-trix-button-group="file-tools"] {
+        trix-toolbar {
             display: none;
         }
     </style>

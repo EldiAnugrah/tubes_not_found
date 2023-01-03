@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::factory(3)->create();
+        // User::factory(3)->create();
 
         Category::create([
             'name' => 'Horror',
@@ -56,6 +56,6 @@ class DatabaseSeeder extends Seeder
             'slug' => 'action'
         ]);
 
-        Post::factory(20)->create();
+        // Post::factory(20)->create();
     }
 }

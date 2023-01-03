@@ -9,8 +9,8 @@
 
             @if ($posts->count())
                 @foreach ($posts as $post)
-                    <div class="col-md-4 mb-3">
-                        <div class="card object-fit-sm-contain border rounded">
+                    <div class="col-md-4 mb-3 ">
+                        <div class="card sm-contain border rounded">
                             <div class="position-absolute px-3 py-2" style="background-color: rgba(0,0,0,0.7)">
                                 <a href="/posts?category={{ $post->category->slug }}"
                                     class=" text-white text-decoration-none">
@@ -19,7 +19,7 @@
                             </div>
                             <!-- pengkondisian gambar default -->
                             @if ($post->image)
-                                <div style="max-height:400px; overflow:hidden;">
+                                <div style="height:170px; overflow:hidden;">
                                     <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
                                         class="card-img-top">
                                 </div>
@@ -28,12 +28,16 @@
                                 <img src="https://source.unsplash.com/400x400?{{ $post->category->name }}"
                                     class="card-img-top" alt="{{ $posts[0]->category->name }}">
                             @endif
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $post->title }} </h5>
+                            <div style="height:300px; overflow:hidden;" class="card-body ">
+                                <a href="/posts/{{ $post->slug }}" class="fs-6 text-muted" style="text-decoration:none;">
+                                    <h5 style="color: #F2D11F;text-shadow: 0.4px 0px #000000;" class="card-title">
+                                        {{ $post->title }} </h5>
+                                </a>
                                 <a href="/posts?author={{ $post->author->name }}" class="fs-6 text-muted"
                                     style="text-decoration:none;">by . {{ $post->author->name }} </a>
-                                <p class="card-text fs-6">{{ $post->excerpt }}</p>
-                                <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read</a>
+                                <a href="/posts/{{ $post->slug }}" class="fs-6 text-muted" style="text-decoration:none;">
+                                    <p style="color: #ff9900" class="card-text fs-6">{{ $post->excerpt }}</p>
+                                </a>
                             </div>
                         </div>
                     </div>
