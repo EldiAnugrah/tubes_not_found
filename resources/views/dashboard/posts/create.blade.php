@@ -48,29 +48,6 @@
       <label for="image" class="form-label">Post Image</label>
       <img class="img-preview img-fluid mb-3 col-sm-5" id="selected-image">
       <input class="form-control  @error('image') is-invalid @enderror " type="file" id="image" name="image" onchange="previewImage()">
-      <a href="" class="card-link see-detail" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="">Cari Gambar?</a>
-
-      <!-- modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Search Image..." id="search-input">
-                  <button class="btn btn-dark" type="button" id="search-button">Search</button>
-                </div>
-            </div>
-            <div class="modal-body" >
-              <div class="row" id="movie-list">
-               <p>. . . </p>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
       @error('image')
       <div class="invalid-feedback">
