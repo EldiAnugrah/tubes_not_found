@@ -8,7 +8,7 @@
 <th>NRP</th>
 </tr>
 <tr>
-<td>Project Manage</td>
+<td>Project Manager</td>
 <td>Eldi Anugrah</td>
 <td>203040031</td>
 </tr>
