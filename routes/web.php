@@ -67,4 +67,6 @@ require __DIR__ . '/auth.php';
 // kodingan kelola post
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+//comment
 Route::post('posts/{post:slug}', [PostController::class, 'insertComment'])->middleware('auth');
